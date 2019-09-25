@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3>Hello <span style="color: red">{{live_user.first_name}}</span>!</h3>
+    <p><a href="/jobs">Home</a> | <a href="#">New job!</a> | <a href="/logout">Logout</a></p>
+
+    <h1> New Job</h1>
+
+    <form action="edit/update" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="form" value="register">
+
+        <section class='reg-info'>
+            <label for='l_name'>Title:</label>
+            <input type="text" name="title" class="form-control" id="" value="{{job.title}}">
+            {% if messages %}
+            {% for message in messages %}
+            {% if message.extra_tags == 'title' %}
+            <p class='error'>{{message}}</p>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+        </section>
+
+        <section class='reg-info'>
+            <label for='l_name'>Description</label>
+            <input type="text" name="desc" class="form-control" value="{{job.desc}}">
+            {% if messages %}
+            {% for message in messages %}
+            {% if message.extra_tags == 'desc' %}
+            <p class='error'>{{message}}</p>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+        </section>
+
+        <section class='reg-info'>
+            <label for='l_name'>Location</label>
+            <input type="text" name="location" class="form-control" value="{{job.location}}">
+            {% if messages %}
+            {% for message in messages %}
+            {% if message.extra_tags == 'location' %}
+            <p class='error'>{{message}}</p>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+        </section>
+
+
+
+
+
+
+        <input type="submit" name="" value="Submit" id="" class="btn btn-primary">
+        <a href="/jobs">Cancel</a>
+    </form>
+
+</body>
+
+</html>
